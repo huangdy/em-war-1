@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.leidos.xchangecore.core</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>war</packaging>
+    <artifactId>xchangecore</artifactId>
+    <name>xChangeCore's war</name>
+    <version>${em-war.version}</version>
+
+    <build>
+
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>core.properties</include>
+                                <include>WEB-INF/web.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Version>${Implementation-Version}</Implementation-Version>
+                            <em-war-version>${em-war.version}</em-war-version>
+                            <em-services-version>${em-services.version}</em-services-version>
+                            <em-processes-version>${em-processes.version}</em-processes-version>
+                            <infra-services-version>${infra-services.version}</infra-services-version>
+                            <infra-xmpp-version>${infra-xmpp.version}</infra-xmpp-version>
+                            <xmlbeans-infrastructure-version>${xmlbeans-infrastructure.version}</xmlbeans-infrastructure-version>
+                            <xmlbeans-edxl_rm-version>${xmlbeans-edxl_rm.version}</xmlbeans-edxl_rm-version>
+                            <xmlbeans-em-version>${xmlbeans-em.version}</xmlbeans-em-version>
+                            <xmlbeans-have-version>${xmlbeans-have.version}</xmlbeans-have-version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.leidos.xchangecore.core</groupId>
+            <artifactId>em-agreements</artifactId>
+            <version>${em-processes.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.leidos.xchangecore.core</groupId>
+            <artifactId>infra-services</artifactId>
+            <version>${infra-services.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.leidos.xchangecore.core</groupId>
+            <artifactId>infra-xmpp</artifactId>
+            <version>${infra-xmpp.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.leidos.xchangecore.core</groupId>
+            <artifactId>em-services</artifactId>
+            <version>${em-services.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
